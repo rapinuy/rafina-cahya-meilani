@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "IoT Engineer",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-pushbutton", "id": "btn_count", "top": -60, "left": 180, "attrs": { "color": "green", "label": "COUNT" } },
+    { "type": "wokwi-pushbutton", "id": "btn_reject", "top": 10, "left": 180, "attrs": { "color": "yellow", "label": "REJECT" } },
+    { "type": "wokwi-pushbutton", "id": "btn_fault", "top": 80, "left": 180, "attrs": { "color": "red", "label": "FAULT" } },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 160, "left": 180, "attrs": {} },
+    { "type": "wokwi-led", "id": "led_g", "top": 20, "left": -130, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "led_y", "top": 70, "left": -130, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "led_r", "top": 120, "left": -130, "attrs": { "color": "red" } },
+    { "type": "wokwi-buzzer", "id": "bz1", "top": 180, "left": -140, "attrs": { "volume": "0.5" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "btn_count:1.l", "esp:19", "green", [ "h-20" ] ],
+    [ "btn_count:2.l", "esp:GND.2", "black", [ "h-10" ] ],
+    [ "btn_reject:1.l", "esp:21", "gold", [ "h-20" ] ],
+    [ "btn_reject:2.l", "esp:GND.2", "black", [ "h-10" ] ],
+    [ "btn_fault:1.l", "esp:22", "red", [ "h-20" ] ],
+    [ "btn_fault:2.l", "esp:GND.2", "black", [ "h-10" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:4", "blue", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.3", "black", [ "v0" ] ],
+    [ "led_g:A", "esp:25", "green", [ "v0" ] ],
+    [ "led_g:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led_y:A", "esp:26", "gold", [ "v0" ] ],
+    [ "led_y:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led_r:A", "esp:27", "red", [ "v0" ] ],
+    [ "led_r:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "bz1:1", "esp:GND.1", "black", [ "v0" ] ],
+    [ "bz1:2", "esp:13", "orange", [ "v0" ] ]
+  ]
+}
